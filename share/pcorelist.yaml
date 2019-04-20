@@ -111,6 +111,7 @@ subcommands:
       -
         name: feature
         summary: feature name
+        multiple: true
         completion:
           command:
             - replace: SELF

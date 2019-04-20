@@ -108,15 +108,17 @@ sub features {
             if $feature2version{$name};
     }
 
-    if (defined $param_feature) {
-        if ($feature2version{ $param_feature }) {
-            say sprintf "feature '%s' was first released with the perl"
-                . " %s feature bundle",
-                $param_feature, $feature2version{ $param_feature };
-        }
-        else {
-            say sprintf "feature '%s' doesn't exist (or so I think)",
-                $param_feature;
+    if (@$param_feature) {
+        for my $feature (@$param_feature) {
+            if ($feature2version{ $feature }) {
+                say sprintf "feature '%s' was first released with the perl"
+                    . " %s feature bundle",
+                    $feature, $feature2version{ $feature };
+            }
+            else {
+                say sprintf "feature '%s' doesn't exist (or so I think)",
+                    $feature;
+            }
         }
     }
     else {

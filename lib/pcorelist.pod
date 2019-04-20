@@ -70,7 +70,7 @@ Parameters:
 
 =head3  features
 
-    pcorelist  features [options] [<feature>]
+    pcorelist  features [options] [<feature>+]
 
 List features with perl versions
 
@@ -84,7 +84,7 @@ Options:
 
 Parameters:
 
-    feature    feature name
+    feature   [] feature name (multiple)
 
 =head3  module
 

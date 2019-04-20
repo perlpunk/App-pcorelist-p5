@@ -159,7 +159,7 @@ _pcorelist_diff_param_perl2_completion
                 # ---- Command: features
                 _arguments -s -C \
                     '1: :->cmd1' \
-                    '2: :->feature' \
+                    '*: :->feature' \
                     '--help[Show command help]' \
                     '-h[Show command help]' \
                     '--raw[List only feature names]' \
