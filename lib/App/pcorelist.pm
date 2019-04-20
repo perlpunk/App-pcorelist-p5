@@ -76,7 +76,18 @@ sub diff {
     else {
         @result = @out;
     }
-    say for @result;
+    for my $item (@result) {
+        my ($mod, $v1, $v2) = split ' ', $item;
+        if ($v1 =~ m/absent/) {
+            say $run->colored(out => ['green'], $item);
+        }
+        elsif ($v2 =~ m/absent/) {
+            say $run->colored(out => ['red'], $item);
+        }
+        else {
+            say $item;
+        }
+    }
 }
 
 sub features {
