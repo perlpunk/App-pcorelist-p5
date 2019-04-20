@@ -1,0 +1,7 @@
+completion:
+	appspec completion share/pcorelist.yaml --zsh  > share/completion/zsh/_pcorelist
+	appspec completion share/pcorelist.yaml --bash  > share/completion/bash/pcorelist.bash
+
+pod:
+	appspec pod share/pcorelist.yaml > lib/pcorelist.pod
+
