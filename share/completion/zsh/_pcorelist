@@ -15,7 +15,7 @@ _pcorelist() {
 
         case $state in
         cmd1)
-            _alternative 'args:cmd2:((diff\:"Show diff between two Perl versions" features\:"List features with perl versions" help\:"Show command help" module\:"Show for which perl version the module was first released" modules\:"List all modules" perl\:"Perl Versions"))'
+            _alternative 'args:cmd2:((completion-dir\:"Output the location of the shell completion files" diff\:"Show diff between two Perl versions" features\:"List features with perl versions" help\:"Show command help" module\:"Show for which perl version the module was first released" modules\:"List all modules" perl\:"Perl Versions"))'
         ;;
 
         args)
@@ -120,6 +120,17 @@ _pcorelist() {
 
                 esac
             ;;
+            completion-dir)
+
+                # ---- Command: completion-dir
+                _arguments -s -C \
+                    '1: :->cmd1' \
+                    '--help[Show command help]' \
+                    '-h[Show command help]' \
+                    && ret=0
+
+
+            ;;
             diff)
 
                 # ---- Command: diff
@@ -173,7 +184,7 @@ _pcorelist_features_param_feature_completion
 
                 case $state in
                 cmd2)
-                    _alternative 'args:cmd3:((diff features module modules perl))'
+                    _alternative 'args:cmd3:((completion-dir diff features module modules perl))'
                 ;;
 
                 args)
@@ -281,6 +292,19 @@ _pcorelist_features_param_feature_completion
                         ;;
 
                         esac
+                    ;;
+                    completion-dir)
+
+                        # ---- Command: help completion-dir
+                        _arguments -s -C \
+                            '1: :->cmd1' \
+                            '2: :->cmd2' \
+                            '--help[Show command help]' \
+                            '-h[Show command help]' \
+                            '--all[]' \
+                            && ret=0
+
+
                     ;;
                     diff)
 

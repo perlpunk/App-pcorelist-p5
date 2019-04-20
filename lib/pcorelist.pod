@@ -1,6 +1,6 @@
 =head1 NAME
 
-pcorelist - corelist with subcommands shell completion
+pcorelist - corelist with subcommands and shell completion
 
 =head1 ABSTRACT
 
@@ -8,6 +8,22 @@ This is a wrapper around the corelist tool which adds shell completion
 
 =head1 DESCRIPTION
 
+corelist is a tool providing information about when a module was included
+in the perl core, and when a feature was added to perl.
+
+pcorelist is a simple wrapper that adds subcommands. This makes it easier
+to add tab completion.
+
+=head2 EXAMPLES
+
+  pcorelist features <TAB>
+  # shows all features
+
+  pcorelist module <TAB>
+  # shows all modules
+
+  pcorelist diff <TAB>
+  # shows all perl versions
 
 
 =head2 GLOBAL OPTIONS
@@ -16,6 +32,25 @@ This is a wrapper around the corelist tool which adds shell completion
 
 
 =head2 SUBCOMMANDS
+
+=head3  completion-dir
+
+    pcorelist  completion-dir
+
+Output the location of the shell completion files
+
+For bash, just source the bash file.
+
+    source /path/to/completion/bash/pcorelist.bash
+
+For zsh, put the following in your C<.zshrc>:
+
+    # before the compinit call
+    fpath=('/path/to/completion/zsh' $fpath)
+
+Then C<exec zsh>.
+
+
 
 =head3  diff
 

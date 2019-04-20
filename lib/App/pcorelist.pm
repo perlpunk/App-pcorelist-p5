@@ -9,6 +9,7 @@ use 5.010;
 
 use base 'App::Spec::Run::Cmd';
 use Text::Table;
+use File::Share qw/ dist_dir dist_file /;
 
 sub module {
     my ($self, $run) = @_;
@@ -153,6 +154,16 @@ sub modules {
         @modules{ (keys %$changed), (keys %$removed) } = ();
     }
     say for sort keys %modules;
+}
+
+sub completion_dir {
+    my $sharedir = dist_dir('App-pcorelist');
+    my $completion_dir = dist_file("App-pcorelist", 'completion');
+    printf +("%-21s: %30s\n" x 4),
+        'Shared directory', $sharedir,
+        'Completion directory', $completion_dir,
+        'zsh completion', "$completion_dir/zsh/_pcorelist",
+        'bash completion', "$completion_dir/bash/pcorelist.bash";
 }
 
 1;

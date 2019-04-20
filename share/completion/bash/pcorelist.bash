@@ -23,7 +23,7 @@ _pcorelist() {
 
     0)
         __comp_current_options || return
-        __pcorelist_dynamic_comp 'commands' 'diff'$'\t''Show diff between two Perl versions'$'\n''features'$'\t''List features with perl versions'$'\n''help'$'\t''Show command help'$'\n''module'$'\t''Show for which perl version the module was first released'$'\n''modules'$'\t''List all modules'$'\n''perl'$'\t''Perl Versions'
+        __pcorelist_dynamic_comp 'commands' 'completion-dir'$'\t''Output the location of the shell completion files'$'\n''diff'$'\t''Show diff between two Perl versions'$'\n''features'$'\t''List features with perl versions'$'\n''help'$'\t''Show command help'$'\n''module'$'\t''Show for which perl version the module was first released'$'\n''modules'$'\t''List all modules'$'\n''perl'$'\t''Perl Versions'
 
     ;;
     *)
@@ -100,6 +100,10 @@ _pcorelist() {
         ;;
         esac
       ;;
+      completion-dir)
+        __pcorelist_handle_options_flags
+        __comp_current_options true || return # no subcmds, no params/opts
+      ;;
       diff)
         FLAGS+=('--added' 'Show only added modules' '--removed' 'Show only removed modules')
         __pcorelist_handle_options_flags
@@ -147,7 +151,7 @@ _pcorelist() {
 
         1)
             __comp_current_options || return
-            __pcorelist_dynamic_comp 'commands' 'diff'$'\n''features'$'\n''module'$'\n''modules'$'\n''perl'
+            __pcorelist_dynamic_comp 'commands' 'completion-dir'$'\n''diff'$'\n''features'$'\n''module'$'\n''modules'$'\n''perl'
 
         ;;
         *)
@@ -211,6 +215,10 @@ _pcorelist() {
 
             ;;
             esac
+          ;;
+          completion-dir)
+            __pcorelist_handle_options_flags
+            __comp_current_options true || return # no subcmds, no params/opts
           ;;
           diff)
             __pcorelist_handle_options_flags

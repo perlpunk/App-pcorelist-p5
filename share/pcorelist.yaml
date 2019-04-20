@@ -2,10 +2,30 @@
 name: pcorelist
 appspec: { "version": 0.001 }
 class: App::pcorelist
-title: corelist with subcommands shell completion
+title: corelist with subcommands and shell completion
 abstract: This is a wrapper around the corelist tool which adds shell completion
+description: |
+  corelist is a tool providing information about when a module was included
+  in the perl core, and when a feature was added to perl.
+
+  pcorelist is a simple wrapper that adds subcommands. This makes it easier
+  to add tab completion.
+
+  =head2 EXAMPLES
+
+    pcorelist features <TAB>
+    # shows all features
+
+    pcorelist module <TAB>
+    # shows all modules
+
+    pcorelist diff <TAB>
+    # shows all perl versions
+
 options: []
+
 subcommands:
+
   module:
     summary: Show for which perl version the module was first released
     op: module
@@ -40,6 +60,7 @@ subcommands:
           command:
             - replace: SELF
             - modules
+
   perl:
     summary: Perl Versions
     op: perl
@@ -53,6 +74,7 @@ subcommands:
         name: release
         summary: Show perl releases with dates
         type: flag
+
   diff:
     summary: Show diff between two Perl versions
     op: diff
@@ -78,6 +100,7 @@ subcommands:
         type: string
         required: true
         completion: *complete_perl_version
+
   features:
     summary: List features with perl versions
     description: |
@@ -98,8 +121,25 @@ subcommands:
         name: raw
         summary: List only feature names
         type: flag
+
   modules:
     summary: List all modules
     op: modules
+
+  completion-dir:
+    summary: Output the location of the shell completion files
+    op: completion_dir
+    description: |
+      For bash, just source the bash file.
+
+          source /path/to/completion/bash/pcorelist.bash
+
+      For zsh, put the following in your C<.zshrc>:
+
+          # before the compinit call
+          fpath=('/path/to/completion/zsh' $fpath)
+
+      Then C<exec zsh>.
+
 # vim:et:sts=2:sws=2:sw=2:foldmethod=indent
 
