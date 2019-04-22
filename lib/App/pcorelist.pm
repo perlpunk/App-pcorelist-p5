@@ -101,7 +101,7 @@ sub features {
     my %feature2version;
     my @bundles = map { $_->[0] }
                   sort { $b->[1] <=> $a->[1] }
-                  map { [$_, numify_version($_)] }
+                  map { [$_, _numify_version($_)] }
                   grep { not /[^0-9.]/ }
                   keys %feature::feature_bundle;
     for my $version (@bundles) {
@@ -146,7 +146,7 @@ sub features {
     }
 }
 
-sub numify_version {
+sub _numify_version {
     my $ver = shift;
     if ($ver =~ /\..+\./) {
         $ver = version->new($ver)->numify;
@@ -180,3 +180,42 @@ sub completion_dir {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding utf-8
+
+=head1 NAME
+
+App::pcorelist - Wrapper around corelist with subcommands and tab completion
+
+=head1 SYNOPSIS
+
+See L<pcorelist> for usage.
+
+=head1 DESCRIPTION
+
+See L<pcorelist>.
+
+=head1 METHODS
+
+=over
+
+=item completion_dir, diff, features, module, modules, perl
+
+These are the methods that are called by C<pcorelist subcommand>.
+
+See L<pcorelist>.
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2019 by Tina Müller
+
+This library is free software and may be distributed under the same terms
+as perl itself.
+
+=cut
