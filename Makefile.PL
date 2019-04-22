@@ -27,30 +27,44 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.010000",
   "NAME" => "App::pcorelist",
   "PREREQ_PM" => {
-    "App::Spec" => "0.004",
+    "App::Spec" => "0.005",
     "App::Spec::Run::Cmd" => 0,
     "File::Share" => 0,
     "Module::CoreList" => 0,
     "Text::Table" => 0,
+    "YAML::PP" => "0.012",
     "base" => 0,
     "feature" => 0,
     "strict" => 0,
     "warnings" => 0
   },
+  "TEST_REQUIRES" => {
+    "File::Spec" => 0,
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
+    "Test::More" => 0,
+    "blib" => "1.01"
+  },
   "VERSION" => "0.001",
   "test" => {
-    "TESTS" => ""
+    "TESTS" => "t/*.t"
   }
 );
 
 
 my %FallbackPrereqs = (
-  "App::Spec" => "0.004",
+  "App::Spec" => "0.005",
   "App::Spec::Run::Cmd" => 0,
   "File::Share" => 0,
+  "File::Spec" => 0,
+  "IO::Handle" => 0,
+  "IPC::Open3" => 0,
   "Module::CoreList" => 0,
+  "Test::More" => 0,
   "Text::Table" => 0,
+  "YAML::PP" => "0.012",
   "base" => 0,
+  "blib" => "1.01",
   "feature" => 0,
   "strict" => 0,
   "warnings" => 0
